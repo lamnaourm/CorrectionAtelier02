@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -140,6 +142,14 @@ public class Main extends JFrame {
 				txt_ht.setText(String.format("%.2f", ht));
 				txt_ttc.setText(String.format("%.2f", ttc));
 				
+				if(ht>200 && ttc>200) {
+					txt_unit.setBackground(Color.red);
+					txt_ttc.setBackground(Color.red);
+				}else {
+					txt_unit.setBackground(UIManager.getColor("TextField.background" ));
+					txt_ttc.setBackground(UIManager.getColor("TextField.background" ));
+				}
+				
 			}
 		});
 		btnCalculer.setBounds(341, 92, 89, 23);
@@ -170,7 +180,7 @@ public class Main extends JFrame {
 	}
 	
 	void closeWindow() {
-		int choix = JOptionPane.showConfirmDialog(null, "Voulez-vous quitter app ?");
+		int choix = JOptionPane.showConfirmDialog(null, "Voulez-vous quitter app ?","Fermer Fenetre",JOptionPane.YES_NO_OPTION);
 		
 		if(choix==JOptionPane.OK_OPTION)
 			this.dispose();
